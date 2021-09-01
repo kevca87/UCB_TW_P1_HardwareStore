@@ -1,0 +1,14 @@
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\bin\Debug\netcoreapp3.1\HardwareStore.exe
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\bin\Debug\netcoreapp3.1\HardwareStore.deps.json
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\bin\Debug\netcoreapp3.1\HardwareStore.runtimeconfig.json
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\bin\Debug\netcoreapp3.1\HardwareStore.runtimeconfig.dev.json
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\bin\Debug\netcoreapp3.1\HardwareStore.dll
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\bin\Debug\netcoreapp3.1\HardwareStore.pdb
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.csproj.AssemblyReference.cache
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.AssemblyInfoInputs.cache
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.AssemblyInfo.cs
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.csproj.CoreCompileInputs.cache
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.dll
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.pdb
+C:\Users\Kevin\Documents\University\TW_Tecnologias_web\01_Project1\HardwareStore\obj\Debug\netcoreapp3.1\HardwareStore.genruntimeconfig.cache
