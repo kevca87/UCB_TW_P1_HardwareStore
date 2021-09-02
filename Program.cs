@@ -1,4 +1,6 @@
-﻿using HardwareStore.Services;
+﻿using HardwareStore.Controllers;
+using HardwareStore.Models;
+using HardwareStore.Services;
 using System;
 using System.Collections.Generic;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HardwareStore
+namespace HardwareStore.Models
 {
     public class Product : IProduct
     {

@@ -1,9 +1,10 @@
-﻿using HardwareStore.Services;
+﻿using HardwareStore.Models;
+using HardwareStore.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HardwareStore
+namespace HardwareStore.Controllers
 {
     public class ProductController
     {
