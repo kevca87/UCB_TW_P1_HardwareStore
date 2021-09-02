@@ -6,6 +6,6 @@ namespace HardwareStore.Models
 {
     class Toilet : Product
     {
-
+        public string Color { get; set; }
     }
 }

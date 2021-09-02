@@ -93,7 +93,7 @@ namespace HardwareStore
             }
             return subTotals;
         }
-        public string CheckOut(string ownerName,int cardNumber,int cvc, ICreditCard pM)
+        public string CheckOut(string ownerName,long cardNumber,int cvc, ICreditCard pM)
         {
             string ans;
             _paymentService = pM;

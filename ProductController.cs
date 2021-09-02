@@ -23,6 +23,10 @@ namespace HardwareStore.Controllers
         public Product GetProduct(int productId)
         {
             var product = _productService.GetProduct(productId);
+            if(product==null)
+            {
+                throw new Exception("That product doesn't exist");
+            }
             return product;
         }
         public IEnumerable<Product> GetProductsOrderByName()

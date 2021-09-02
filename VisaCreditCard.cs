@@ -8,13 +8,13 @@ namespace HardwareStore
     public class VisaCreditCard : ICreditCard
     {
         public string OwnerName { get; set; }
-        public int CardNumber { get; set; }
+        public long CardNumber { get; set; }
         public int CVC { get; set; }
         public decimal Founds { get; set; }
         public decimal Limit { get; set; }
 
         //TODO CHANGE TO VOID AND THROW EXCEPTIONS
-        public bool ProccessPayment(string ownerName,int cardNumber, int cvc,decimal totalToPay)
+        public bool ProccessPayment(string ownerName,long cardNumber, int cvc,decimal totalToPay)
         {
             bool allOk = ownerName == OwnerName && cardNumber == CardNumber && cvc == CVC && EnoughFounds(totalToPay) && LessThanLimit(totalToPay);
             if (allOk)
