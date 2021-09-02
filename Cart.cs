@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareStore.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,13 @@ namespace HardwareStore
         public decimal Price { get; set; }
         public string Name { get; set; }
         public int Id { get; set; }
-        
+        public string Brand { get; set; }
+        public string Description { get; set; }
+
     }
     public class Cart<P> where P: IProduct
     {
-        //private IPayment paymentService;
+        private ICreditCard _paymentService;
         private List<(P Product, int Quantity)> _items = new List<(P Product, int Quantity)>();
 
         public decimal GetTotalPrice()
@@ -89,9 +92,22 @@ namespace HardwareStore
             }
             return subTotals;
         }
-        public string CheckOut()
+        public string CheckOut(string ownerName,int cardNumber,int cvc, ICreditCard pM)
         {
-            return $"Su total a cancelar es { GetTotalPrice() }";
+            string ans;
+            _paymentService = pM;
+            decimal totalToPay = GetTotalPrice();
+            //TO DO Exceptions
+            bool wasSuccess = pM.ProccessPayment(ownerName,cardNumber,cvc,totalToPay);
+            if (wasSuccess)
+            {
+                ans = $"El pago de { GetTotalPrice() } $ fue realizado correctamente";
+            }
+            else
+            {
+                ans = $"No se pudo procesar el pago. Revise el metodo de pago";
+            }
+            return ans;
         }
 
         public override string ToString()
