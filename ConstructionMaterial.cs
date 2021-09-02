@@ -4,12 +4,8 @@ using System.Text;
 
 namespace HardwareStore
 {
-    public class ConstructionMaterial : IProduct
+    public class ConstructionMaterial : Product
     {
-        public decimal Price { get; set; }
-        public string Name { get; set; }
-        public int Id { get; set; }
-        public string Brand { get; set; }
-        public string Description { get; set; }
+        
     }
 }

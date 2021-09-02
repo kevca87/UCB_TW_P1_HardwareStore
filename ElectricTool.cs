@@ -13,6 +13,16 @@ namespace HardwareStore
     {
         public PowerSourceEnum PowerSource { get; set; }
         public PowerSourceEnum ElectricCurrentType { get; set; }
-
+        public override string ToString()
+        {
+            return Name;
+        }
+        public virtual string Show()
+        {
+            string ans = base.Show();
+            ans = $"Power Source: {PowerSource}\n" +
+                $"Electric current type: {ElectricCurrentType}\n";
+            return ans;
+        }
     }
 }

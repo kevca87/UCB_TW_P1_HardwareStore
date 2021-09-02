@@ -1,5 +1,6 @@
 ﻿using HardwareStore.Services;
 using System;
+using System.Collections.Generic;
 
 namespace HardwareStore
 {
@@ -18,7 +19,7 @@ namespace HardwareStore
                 OwnerName = myName,
                 CardNumber = myCardNumber,
                 CVC = myCVC,
-                Founds = 500
+                Founds = 10000
             };
             return myCreditCard;
         }
@@ -46,22 +47,112 @@ namespace HardwareStore
             }
             return fun;
         }
-        static void Main(string[] args)
+
+        static public void AddProductToCart(Cart<IProduct> myCart)
         {
-            Cart<IProduct> myCart = new Cart<IProduct>();
-            myCart.AddProduct(new Tool() { Name = "Hammer", Id = 1, Price = 500 },1);
-            myCart.AddProduct(new Tool() { Name = "Screwdriver", Id = 2, Price = 100 },6);
-            Console.WriteLine(myCart.ToString());
-            ICreditCard myCreditCard = CreditCardForm();
-            //myCreditCard.AddFounds()
-            Console.WriteLine(myCart.CheckOut(myCreditCard.OwnerName,myCreditCard.CardNumber,myCreditCard.CVC,myCreditCard));
-            while (true)
+            IProductService productService = new ProductService();
+            ProductController pC = new ProductController(productService);
+            Console.Write("Id of the product that you want to add to your cart: ");
+            int idProd = Int32.Parse(Console.ReadLine());
+            Product product = pC.GetProduct(idProd);
+            Console.Write("How many items of this product? : ");
+            int q = Int32.Parse(Console.ReadLine());
+            bool allOk = myCart.AddProduct(product, q);
+            if (allOk)
             {
-                Console.WriteLine("Choose an option");
-                int option = Int32.Parse(Console.ReadLine());
-                CreditCardMenuFun creditCardFun = CreditCardMenu(option, myCart);
-                creditCardFun(myCreditCard);
+                Console.WriteLine("Successful addition");
+            }
+            else
+            {
+                Console.Write("Something fail, dont questions");
             }
         }
+
+        static public void ShowMyCart(Cart<IProduct> cart)
+        {
+            Console.WriteLine(cart.ToString());
+        }
+
+        static public void SelectProduct(Cart<IProduct> cart)
+        {
+            IProductService productService = new ProductService();
+            ProductController pC = new ProductController(productService);
+            Console.Write("\nId del producto que quiera ver: ");
+            int idProd = Int32.Parse(Console.ReadLine());
+            Product product = pC.GetProduct(idProd);
+            Console.WriteLine(product.ShowDetail());
+        }
+
+        static public void ShowProducts(Cart<IProduct> cart)
+        {
+            Console.Clear();
+            IProductService productService = new ProductService();
+            ProductController pC = new ProductController(productService);
+            Menu<int> orderBy = new Menu<int>();
+            IEnumerable<Product> products;
+            Console.Write("Order products by:\n1) Name\n2) Id\n3) Price: ");
+            int optionOrder = Int32.Parse(Console.ReadLine());
+            if (optionOrder == 1)
+            {
+                products = pC.GetProductsOrderByName();
+            }
+            else if(optionOrder ==2)
+            {
+                products = pC.GetProductsOrderById();
+            }
+            else
+            {
+                products = pC.GetProductsOrderByPrice();
+            }
+            Console.Clear();
+            foreach (Product p in products)
+            {
+                Console.WriteLine(p.Show());
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("--------------------------------------");
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+            Menu<int> menuProducts = new Menu<int>(){Name="PRODUCTS MENU" };
+            menuProducts.AddOption(1,SelectProduct);
+            menuProducts.AddOption(2,AddProductToCart);
+            menuProducts.ShowMenu();
+            Console.Write("Choose an option: ");
+            int option = Int32.Parse(Console.ReadLine());
+            try
+            {
+                menuProducts.ChooseOption(option)(cart);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Menu<string> menu = new Menu<string>(){Name="PRINCIPAL MENU"};
+            Cart<IProduct> cart = new Cart<IProduct>();
+            menu.AddOption("1", ShowProducts);
+            menu.AddOption("2", ShowMyCart);
+            menu.AddOption("exit", (cart) => { Console.WriteLine("See you later : )"); });
+            string option = "0";
+            while (option != "exit")
+            {
+                menu.ShowMenu();
+                Console.Write("Choose an option: ");
+                option = Console.ReadLine();
+                Console.WriteLine("-------------------------------------------");
+                try
+                {
+                    var fun = menu.ChooseOption(option);
+                    fun(cart);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
     }
 }
