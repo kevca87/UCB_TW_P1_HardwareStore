@@ -30,10 +30,13 @@ namespace HardwareStore.Services
             });
             _products.Add(new Tool() { Name = "Destornillador plano", Id = 3, Price = 30, InventoryQuantity = 100, Brand = "Husky" });
             _products.Add(new ElectricTool() { Name = "Taladro", Id = 4, Price = 300, InventoryQuantity = 20, Brand = "Milwakee",ElectricCurrentType=220,PowerSource=PowerSourceEnum.Batery});
-            _products.Add(new ElectricTool() { Name = "Amoladora", Id = 5, Price = 300, InventoryQuantity = 20 });
+            _products.Add(new ElectricTool() { Name = "Amoladora", Id = 5, Price = 300, InventoryQuantity = 20, Brand = "Milwakee", ElectricCurrentType = 220, PowerSource = PowerSourceEnum.Cable });
+            _products.Add(new Toilet() { Name = "Inodoro", Id = 6, Price = 400, InventoryQuantity = 20, Brand = "Ferrum",Color="Crema"});
         }
         public Product GetProduct(int productId)
         {
+            //LINQ
+            //LAMBDAS
             return _products.FirstOrDefault(p => productId == p.Id);
         }
         public IList<Product> GetProducts()
